@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Vuelos OACI Premium</title>
+    
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="p-4 sm:p-8">
+
+    <div id="top" class="w-full max-w-6xl mx-auto flex flex-col items-center gap-8">
+        
+        <div class="display-panel">
+            
+            <div class="flaps-section">
+                <!-- Origin (4 characters) -->
+                <div class="flap-container">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-plane-departure"></i>
+                    </div>
+                    <div class="flap-group" id="board-origin">
+                        <!-- Flaps injected by JS -->
+                    </div>
+                </div>
+
+                <!-- Destination (4 characters) -->
+                <div class="flap-container">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-plane-arrival"></i>
+                    </div>
+                    <div class="flap-group" id="board-dest">
+                        <!-- Flaps injected by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <div class="info-row">
+                    <span class="info-label">C/S:</span>
+                    <span class="info-value" id="display-callsign">VOI551</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">A/P:</span>
+                    <span class="info-value" id="display-airplane">A320</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="controls w-full max-w-[720px] p-6 sm:p-8 rounded grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12 shadow-2xl">
+            <div class="flex flex-col gap-2 w-full">
+                <label for="input-origin" class="text-xs font-bold uppercase tracking-wider text-gray-400">
+                    Origin
+                </label>
+                <input type="text" id="input-origin" maxlength="4" placeholder="MMSD" autocomplete="off" class="w-full px-4 py-3 rounded font-mono text-xl uppercase tracking-widest">
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+                <label for="input-dest" class="text-xs font-bold uppercase tracking-wider text-gray-400">
+                    Destination
+                </label>
+                <input type="text" id="input-dest" maxlength="4" placeholder="MMTO" autocomplete="off" class="w-full px-4 py-3 rounded font-mono text-xl uppercase tracking-widest">
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+                <label for="input-callsign" class="text-xs font-bold uppercase tracking-wider text-gray-400">
+                    Callsign
+                </label>
+                <input type="text" id="input-callsign" maxlength="8" placeholder="VOI551" autocomplete="off" class="w-full px-4 py-3 rounded font-mono text-xl uppercase tracking-widest">
+            </div>
+            
+            <div class="flex flex-col gap-2 w-full">
+                <label for="input-airplane" class="text-xs font-bold uppercase tracking-wider text-gray-400">
+                    Airplane
+                </label>
+                <input type="text" id="input-airplane" maxlength="6" placeholder="A320" autocomplete="off" class="w-full px-4 py-3 rounded font-mono text-xl uppercase tracking-widest">
+            </div>
+
+            <div class="sm:col-span-2 flex flex-wrap items-center justify-between gap-3 mt-2">
+                <a href="widget.html" class="widget-link">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    Abrir widget
+                </a>
+                <button id="btn-update" class="w-full sm:w-auto bg-[#181818] hover:bg-[#2a2a2a] border border-black text-white font-extrabold uppercase tracking-widest px-8 py-4 rounded transition flex items-center justify-center gap-2 text-lg shadow-lg">
+                    Cargar Ruta
+                </button>
+            </div>
+        </div>
+
+        <footer class="widget-footer">
+            <p>© 2026 CAPI LUIGI | Derechos Reservados | Creado por <a href="https://www.linkedin.com/in/luisjaramillocalderon/" class="footer-link">Luis Jaramillo</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

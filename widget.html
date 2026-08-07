@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget de Vuelo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="p-4 sm:p-8">
+    <div class="w-full max-w-5xl mx-auto flex flex-col items-start gap-4">
+        <a href="index.html" class="widget-backlink">
+            <i class="fa-solid fa-arrow-left-long"></i>
+            Volver al panel
+        </a>
+
+        <div class="widget-card">
+            <div class="widget-header">
+                <div class="widget-title">
+                    <i class="fa-solid fa-jet-fighter-up"></i>
+                    <span>CAPI LUIGI</span>
+                </div>
+                <span id="widget-zulu-time" class="widget-pill">00:00:00 Z</span>
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-board-section">
+                    <div class="widget-board">
+                        <span class="widget-board-icon"><i class="fa-solid fa-plane-departure"></i></span>
+                        <div class="flap-group" id="widget-origin"></div>
+                    </div>
+                    <div class="widget-board">
+                        <span class="widget-board-icon"><i class="fa-solid fa-plane-arrival"></i></span>
+                        <div class="flap-group" id="widget-dest"></div>
+                    </div>
+                </div>
+
+                <div class="widget-info">
+                    <div class="widget-info-row">
+                        <span class="widget-info-label">CALLSIGN:</span>
+                        <span class="widget-info-value" id="widget-callsign">VOI551</span>
+                    </div>
+                    <div class="widget-info-row">
+                        <span class="widget-info-label">AIRPLANE:</span>
+                        <span class="widget-info-value" id="widget-airplane">A320</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

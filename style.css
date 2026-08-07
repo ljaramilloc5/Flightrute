@@ -1,0 +1,434 @@
+:root {
+    --bg-color: #2b3544; /* Dark slate blue from the provided image */
+    --panel-bg: #202833; /* Slightly darker to create depth */
+    --text-color: #ffffff;
+    
+    /* Flap Colors - Dark Gray/Black with White Text */
+    --flap-bg: #181818; /* Dark color from provided image */
+    --flap-border: #000000;
+    --flap-text: #ffffff; /* White text on dark background */
+    --flap-line: rgba(0, 0, 0, 0.8);
+    
+    --font-mono: 'Share Tech Mono', monospace;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    padding: 2rem 1rem;
+}
+
+.display-panel {
+    background-color: var(--panel-bg);
+    border-radius: 4px;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 720px; /* Fits comfortably within 768px */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #000;
+}
+
+/* Container for the left side (Origin and Destination flaps) */
+.flaps-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Container for the right side (Text info) */
+.info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-left: 2rem;
+    border-left: 2px solid #000; /* Vertical divider */
+    min-width: 150px;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.info-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #d1d5db; /* Light gray */
+    width: 40px;
+}
+
+.info-value {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.flap-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Custom icon styling based on the image (square with rounded corners, glowing border) */
+.icon-box {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #000; 
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    background-color: var(--flap-bg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 1.2rem;
+}
+
+.flap-group {
+    display: flex;
+    gap: 2px; /* Very tight gap */
+}
+
+.flap-character {
+    width: 40px;
+    height: 60px;
+    background-color: var(--flap-bg);
+    border-radius: 6px; /* Bordes más redondeados */
+    position: relative;
+    color: var(--flap-text);
+    font-family: var(--font-mono);
+    font-size: 2.8rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--flap-border);
+    overflow: hidden;
+    background-image: none;
+}
+
+.flap-character::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -5%;
+    width: 110%;
+    height: 2px;
+    background-color: var(--flap-line);
+    z-index: 10;
+}
+
+.flap-character::before {
+     display: none;
+}
+
+.flap-text {
+    position: relative;
+    z-index: 1;
+    transform: translateY(-2px);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+}
+
+@keyframes mechanical-tick {
+    0% { transform: scaleY(1) translateY(-2px); filter: brightness(1); }
+    50% { transform: scaleY(0.1) translateY(0); filter: brightness(0.5); }
+    100% { transform: scaleY(1) translateY(-2px); filter: brightness(1); }
+}
+
+.animating .flap-text {
+    animation: mechanical-tick 0.08s linear;
+}
+
+.controls {
+    background: #202833;
+    border: 1px solid #354254;
+    border-top: 4px solid #181818;
+}
+
+.controls input {
+    background-color: #151a22;
+    border: 1px solid #354254;
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.controls input:focus {
+    border-color: #e6e600;
+    box-shadow: 0 0 0 1px #e6e600;
+    outline: none;
+}
+
+.widget-section {
+    width: 100%;
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-top: 0.75rem;
+}
+
+.widget-backlink,
+.widget-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    width: fit-content;
+    color: #f9fafb;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.widget-link {
+    color: #e6e600;
+}
+
+.widget-card {
+    width: 100%;
+    max-width: 720px;
+    padding: 1.25rem 1.35rem;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #242d3a 0%, #1b2230 100%);
+    border: 1px solid #354254;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+
+.widget-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.95rem;
+}
+
+.widget-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #d1d5db;
+}
+
+.widget-pill {
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(230, 230, 0, 0.16);
+    color: #fef3c7;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.widget-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.widget-board-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.widget-board {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.widget-board-label {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: #d1d5db;
+    text-transform: uppercase;
+}
+
+.widget-board-icon {
+    font-size: 1rem;
+    color: #fef3c7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.widget-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    min-width: 140px;
+}
+
+.widget-info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+}
+
+.widget-info-label {
+    color: #d1d5db;
+}
+
+.widget-info-value {
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.widget-card .flap-character {
+    width: 32px;
+    height: 46px;
+    font-size: 1.9rem;
+}
+
+@media (max-width: 860px) {
+    .display-panel {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 1.2rem;
+    }
+
+    .flaps-section {
+        gap: 1.25rem;
+    }
+
+    .info-section {
+        padding-left: 1rem;
+        min-width: auto;
+    }
+}
+
+@media (max-width: 720px) {
+    .display-panel {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+    }
+
+    .info-section {
+        border-left: none;
+        border-top: 2px solid #000;
+        padding-left: 0;
+        padding-top: 1rem;
+        width: 100%;
+    }
+
+    .flaps-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .flap-group {
+        gap: 1px;
+    }
+
+    .flap-character {
+        width: 36px;
+        height: 54px;
+        font-size: 2.4rem;
+    }
+
+    .icon-box {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .display-panel {
+        padding: 1rem;
+    }
+
+    .flap-character {
+        width: 32px;
+        height: 48px;
+        font-size: 2rem;
+    }
+
+    .info-row {
+        gap: 0.5rem;
+    }
+
+    .info-label {
+        width: 32px;
+        font-size: 0.8rem;
+    }
+
+    .info-value {
+        font-size: 1rem;
+    }
+
+    .controls {
+        padding: 1rem;
+    }
+
+    .controls input {
+        font-size: 1rem;
+    }
+
+    #btn-update {
+        font-size: 0.95rem;
+        padding: 0.9rem 1rem;
+    }
+}
+
+.widget-footer {
+    width: 100%;
+    max-width: 720px;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: auto;
+    font-size: 0.75rem;
+    color: #9ca3af;
+    letter-spacing: 0.05em;
+}
+
+.widget-footer p {
+    margin: 0;
+}
+
+.footer-link {
+    color: #e6e600;
+    text-decoration: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: #ffff00;
+    text-decoration: underline;
+}
